@@ -1,12 +1,12 @@
-import './globals.css'
-import type { Metadata } from 'next'
-import { Figtree } from 'next/font/google'
-import SubabaseProvider from '@/providers/SupabaseProvider'
-import UserProvider from '@/providers/UserProvider'
-import Sidebar from '@/components/Sidebar'
-import ModalProvider from '@/providers/ModalProvider'
-import ToasterProvider from '@/providers/ToasterProvider'
-import getSongsByUserId from '@/actions/getSongsByUserID'
+import './globals.css';
+import type { Metadata } from 'next';
+import { Figtree } from 'next/font/google';
+import SubabaseProvider from '@/providers/SupabaseProvider';
+import UserProvider from '@/providers/UserProvider';
+import Sidebar from '@/components/Sidebar';
+import ModalProvider from '@/providers/ModalProvider';
+import ToasterProvider from '@/providers/ToasterProvider';
+import getSongsByUserId from '@/actions/getSongsByUserId';
 
 const font = Figtree({ subsets: ['latin'] })
 
@@ -17,11 +17,7 @@ export const metadata: Metadata = {
 
 export const revalidate = 0;
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const userSongs = await getSongsByUserId();
 
   return (
@@ -38,5 +34,5 @@ export default async function RootLayout({
         </SubabaseProvider>
       </body>
     </html>
-  )
-}
+  );
+};

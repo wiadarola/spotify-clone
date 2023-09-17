@@ -17,13 +17,14 @@ const LikedContent: React.FC<LikedContentProps> = ({ songs }) => {
     const router = useRouter();
     const authModal = useAuthModal();
     const { isLoading, user } = useUser();
+    const onPlay = useOnPlay(songs);
 
     useEffect(() => {
         if (!isLoading && !user) {
             router.replace('/');
             authModal.onOpen();
         }
-    }, [isLoading, user]);
+    }, [isLoading, user, router, authModal]);
 
     if (songs.length === 0) {
         return (
@@ -32,8 +33,6 @@ const LikedContent: React.FC<LikedContentProps> = ({ songs }) => {
             </div>
         );
     }
-
-    const onPlay = useOnPlay(songs);
 
     return (
         <div className='flex flex-col gap-y-2 w-full p-6'>

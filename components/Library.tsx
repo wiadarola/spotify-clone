@@ -16,13 +16,12 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
     const authModal = useAuthModal();
     const uploadModal = useUploadModal();
     const { user } = useUser();
+    const onPlay = useOnPlay(songs);
 
     const onClick = () => {
         if (!user) return authModal.onOpen();
         return uploadModal.onOpen();
     };
-
-    const onPlay = useOnPlay(songs);
 
     return (
         <div className="flex flex-col">

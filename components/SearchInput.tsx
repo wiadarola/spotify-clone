@@ -24,7 +24,7 @@ const SearchInput = () => {
         });
 
         router.push(url);
-    }, [debouncedValue]);
+    }, [debouncedValue, router]);
 
     return (
         <div>

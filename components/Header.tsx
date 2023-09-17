@@ -53,10 +53,10 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
                 </div>
                 <div className="flex md:hidden gap-x-2 items-center">
                     <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
-                        <HiHome size={20} className="text-black" />
+                        <HiHome size={20} className="text-black" onClick={() => router.replace('/')} />
                     </button>
                     <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
-                        <BiSearch size={20} className="text-black" />
+                        <BiSearch size={20} className="text-black" onClick={() => router.replace('/search')} />
                     </button>
                 </div>
                 <div className="flex justify-between items-center gap-x-4">

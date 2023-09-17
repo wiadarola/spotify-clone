@@ -44,7 +44,15 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
 
     const [play, { pause, sound }] = useSound(
         songUrl,
-        { volume: volume, onplay: () => setIsPlaying(true), onend: () => { setIsPlaying(false); onPlayNext() }, onpause: () => setIsPlaying(false), format: ['mp3'] }
+        {
+            volume: volume, onplay: () => setIsPlaying(true),
+            onend: () => {
+                setIsPlaying(false);
+                onPlayNext()
+            },
+            onpause: () => setIsPlaying(false),
+            format: ['mp3']
+        }
     );
 
     useEffect(() => {
@@ -83,14 +91,14 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
 
             {/* Mobile Control */}
             <div className="flex md:hidden col-auto w-full justify-end items-center">
-                <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white p-1 cursor-pointer" onClick={onPlayPrevious}>
+                <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white p-1 cursor-pointer" onClick={handlePlay}>
                     <Icon size={30} className='text-black' />
                 </div>
             </div>
 
             {/* Desktop Control */}
             <div className="hidden h-full md:flex justify-center items-center w-full max-w-[722px] gap-x-6">
-                <AiFillStepBackward size={30} className='text-neutral-400 cursor-pointer hover:text-white transition' onClick={() => { }} />
+                <AiFillStepBackward size={30} className='text-neutral-400 cursor-pointer hover:text-white transition' onClick={onPlayPrevious} />
                 <div onClick={handlePlay} className="flex items-center justify-center h-10 w-10 rounded-full bg-white p-1 cursor-pointer">
                     <Icon size={30} className='text-black' />
                 </div>

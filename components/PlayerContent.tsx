@@ -18,7 +18,7 @@ interface PlayerContentProps {
 
 const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
     const player = usePlayer();
-    const [volume, setVolume] = useState(1);
+    const [volume, setVolume] = useState(() => localStorage.getItem('volume') ? JSON.parse(localStorage.getItem('volume')!) : 1);
     const [isPlaying, setIsPlaying] = useState(false);
     const Icon = isPlaying ? BsPauseFill : BsPlayFill;
     const VolumeIcon = volume === 0 ? HiSpeakerXMark : HiSpeakerWave;
@@ -108,7 +108,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
             <div className="hidden md:flex w-full justify-end pr-2">
                 <div className="flex items-center gap-x-2 w-[120px]">
                     <VolumeIcon onClick={toggleMute} className='cursor-pointer' size={32} />
-                    <Slider value={volume} onChange={(value) => setVolume(value)} />
+                    <Slider value={volume} onChange={(value) => { localStorage.setItem('volume', JSON.stringify(value)); setVolume(value) }} />
                 </div>
             </div>
         </div>

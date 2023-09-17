@@ -19,9 +19,6 @@ const Library: React.FC<LibraryProps> = ({ songs }) => {
 
     const onClick = () => {
         if (!user) return authModal.onOpen();
-
-        // Check for subscription
-
         return uploadModal.onOpen();
     };
 

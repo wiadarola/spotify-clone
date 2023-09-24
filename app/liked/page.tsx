@@ -5,8 +5,6 @@ import Header from "@/components/Header";
 import Image from "next/image";
 import LikedContent from "./components/LikedContent";
 
-interface Props { }
-
 const Liked = async () => {
     const songs = await getLikedSongs();
 

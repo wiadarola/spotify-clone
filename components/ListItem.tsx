@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { FaPlay } from 'react-icons/fa';
+import toast from "react-hot-toast";
+import { useUser } from "@/hooks/useUser";
 
 interface ListItemProps {
     image: string;
@@ -12,9 +14,15 @@ interface ListItemProps {
 
 const ListItem: React.FC<ListItemProps> = ({ image, name, href }) => {
     const router = useRouter();
+    const { user } = useUser();
 
     const onClick = () => {
-        router.push(href);
+        if (href === 'liked' && !user) {
+            toast.error('Liked songs are only available to signed in users');
+        } else {
+            router.push(href);
+        }
+
     };
 
     return (
